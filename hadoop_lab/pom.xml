@@ -42,7 +42,8 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>net.anas.HadoopFileStatus</mainClass>
+              <mainClass>net.anas.Launcher</mainClass> 
+              <!-- utiliser <class> pour spécifier la classe avec la méthode main à exécuter -->
             </manifest>
           </archive>
           <finalName>hadoop-app</finalName>
