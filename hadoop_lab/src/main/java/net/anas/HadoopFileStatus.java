@@ -11,17 +11,20 @@ public class HadoopFileStatus {
             System.exit(1);
         }
 
-        String filePathStr = args[0];               // Chemin complet du fichier source
+        //String filePathStr = args[0];
+        String filePathStr = (args.length >= 1) ? args[0] : "/user/root/purchases.txt"; // Chemin complet du fichier source
         String newFileName = (args.length >= 2) ? args[1] : null; // Nom du fichier renommé
 
         Configuration conf = new Configuration();
         try {
+            //conf.set("fs.defaultFS", "hdfs://localhost:9000");  //pour executé le programme depuis mon machine locale
+            // les informations de mon serveur NameNode est dans: >cat $HADOOP_CONF_DIR/core-site.xml
             FileSystem fs = FileSystem.get(conf);
             Path filepath = new Path(filePathStr);
 
             if(!fs.exists(filepath)) {
                 System.out.println("File does not exist: " + filepath);
-                System.out.println("Argument 0 = " + args[0]);
+                System.out.println("Argument 0 = " + filePathStr);
                 System.exit(1);
             }
 
